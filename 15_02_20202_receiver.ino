@@ -41,6 +41,9 @@ String rssi = "RSSI --";
 String packSize = "--";
 String packet ;
 
+//22-02-2022
+String packetsnr = "SNR --";
+
 void setup() {
  //configura os pinos como saida
   pinMode(16,OUTPUT); //RST do oled
@@ -105,6 +108,8 @@ void cbk(int packetSize) {
     packet += (char) LoRa.read(); //recupera o dado recebido e concatena na variável "packet"
   }
   rssi = "RSSI=  " + String(LoRa.packetRssi(), DEC)+ "dB"; //configura a String de Intensidade de Sinal (RSSI)
+  //22-02-2022
+  packetsnr = "SNR= " + String(LoRa.packetSnr(), DEC);  
   //mostrar dados em tela
   loraData();
 }
@@ -119,6 +124,7 @@ void loraData(){
   display.setFont(ArialMT_Plain_16);
   display.drawString(0 , 18 , "Rx "+ packSize + " bytes");
   display.drawStringMaxWidth(0 , 39 , 128, packet);
-  display.drawString(0, 0, rssi);  
+  display.drawString(0, 0, rssi);
+  display.drawString()  
   display.display();
 }
