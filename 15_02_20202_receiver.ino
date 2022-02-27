@@ -121,10 +121,10 @@ void cbk(int packetSize) {
 void loraData(){
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_LEFT);
-  display.setFont(ArialMT_Plain_16);
-  display.drawString(0 , 18 , "Rx "+ packSize + " bytes");
-  display.drawStringMaxWidth(0 , 39 , 128, packet);
+  display.setFont(ArialMT_Plain_10);
+  display.drawString(0 , 10 , "Rx "+ packSize + " bytes");
+  display.drawStringMaxWidth(0 , 20 , 128, packet);
+  display.drawString(0 , 30, packetsnr);
   display.drawString(0, 0, rssi);
-  display.drawString()  
   display.display();
 }
