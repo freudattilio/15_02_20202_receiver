@@ -140,5 +140,6 @@ void loraData(){
   display.drawStringMaxWidth(0 , 20 , 128, packet);
   display.drawString(0 , 30, packetsnr);
   display.drawString(0, 0, rssi);
+  display.drawString(0,40,"S"+ String(successMessage, DEC)  + "B" + String(breakMessage, DEC));
   display.display();
 }
