@@ -41,8 +41,16 @@ String rssi = "RSSI --";
 String packSize = "--";
 String packet ;
 
+//03-03-2022
+String packetExpected = "Teste do Freud";
+String result = "";
+
 //22-02-2022
 String packetsnr = "SNR --";
+
+//16-03-2022
+int breakMessage = 0;
+int successMessage = 0;
 
 void setup() {
  //configura os pinos como saida
@@ -106,6 +114,12 @@ void cbk(int packetSize) {
   packSize = String(packetSize,DEC); //transforma o tamanho do pacote em String para imprimirmos
   for (int i = 0; i < packetSize; i++) { 
     packet += (char) LoRa.read(); //recupera o dado recebido e concatena na variável "packet"
+  }
+  if (packet == packetExpected){
+    successMessage += 1;
+  }
+  else{
+    breakMessage += 1;
   }
   rssi = "RSSI=  " + String(LoRa.packetRssi(), DEC)+ "dB"; //configura a String de Intensidade de Sinal (RSSI)
   //22-02-2022
